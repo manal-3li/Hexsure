@@ -37,12 +37,20 @@ header .date {
 main {
   flex: 1;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 main h1 {
-  font-size: 6rem;
+  font-size: 4rem;
   text-align: center;
+}
+main img {
+  width: 400px;
+  height: auto;
+}
+main :last-child {
+  margin-top: 90px;
 }
 
 footer {
@@ -52,9 +60,11 @@ footer {
   padding: 20px;
 }
 footer .language-btn {
+  width: 350px;
   position: relative;
-  padding: 5px 100px;
+  padding: 5px 0px;
   border: none;
+  color: #4a4aff;
   cursor: pointer;
   transition: background-color 0.3s;
   font-size: 35px;
@@ -64,17 +74,28 @@ footer .language-btn:hover {
   background-color: #4a4aff;
   color: #ffffff;
 }
+footer .register {
+  border-radius: 9999rem;
+}
 footer .english {
   left: -20px;
   border-radius: 0 9999rem 9999rem 0;
   background-color: #ffffff;
-  color: #1a1a40;
+}
+footer .english i {
+  position: relative;
+  font-size: 50px;
+  top: 10px;
 }
 footer .arabic {
   left: 20px;
   border-radius: 9999rem 0 0 9999rem;
   background-color: #ffffff;
-  color: #1a1a40;
+}
+footer .arabic i {
+  position: relative;
+  font-size: 50px;
+  top: 10px;
 }
 footer p {
   font-size: 0.9rem;
