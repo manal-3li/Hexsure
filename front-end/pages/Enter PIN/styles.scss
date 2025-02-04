@@ -1,0 +1,129 @@
+$font-primary: 'Rubik', serif;
+$primary-color: #ffffff;
+$secondary-color: #1a1a40;
+$button-bg: #ffffff;
+$button-text: #1a1a40;
+$pin-bg: rgb(227, 227, 227);
+$divider-color: white;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-primary;
+}
+
+body {
+  background-image: url(https://s3-alpha-sig.figma.com/img/92ee/87a3/466b5164ecf380f788679fd51c66c5be?Expires=1739750400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=g4uUM2G-OZIHWeOBxenTgJ5y46fR~m4txlH5r2myovLcG5pnAQmibTo7ZORQtAHoxLfRrFTbXNuBMkcaY51icewSvmxgzBtzlBN03kqUek~K-2sqozZmZJVVpVj0hZ~oVa4XU2~laeWajsE2cHkqWV2s5ARmKEkc60EEK~XJaeSWiEZt1VBfUKMDVe815I9sNyXfoJEoAwd7gw8EHp-RCVSRnELG1jn9jFTgITA7NRmb7Xodc8F1ll8~zklNxDBD8U2MeStaarDariu~LpxPOmNVOvZ~gTW59xFhir~JBsI64hhwQk0mknCWKoycb7mV9VX-F1fArk3spvZAxoPC4Q__);
+  background-size: cover;
+  background-position: center;
+  color: $primary-color;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  font-size: 25px;
+}
+
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+}
+
+.pin-container {
+  background: $primary-color;
+  width: 628px;
+  height: 515px;
+  border-radius: 45px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  justify-content: center;
+}
+
+.enter-pin {
+  color: #4F46E5;
+  font-size: 40px;
+  font-style: italic;
+  font-weight: 700;
+  text-align: center;
+}
+
+.pin-boxes {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+.pin-box {
+  width: 70px;
+  height: 70px;
+  background: $pin-bg;
+  border-radius: 17px;
+}
+
+.divider {
+  width: 2px;
+  height: 515px;
+  background: $divider-color;
+}
+
+.numpad-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.numpad {
+  display: grid;
+  gap: 30px;
+}
+
+.row {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+.footer-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.language-btn {
+  padding: 10px 65px;
+  border: none;
+  background-color: $button-bg;
+  color: $button-text;
+  font-size: 35px;
+  font-weight: 600;
+  border-radius: 9999rem;
+  cursor: pointer;
+}
+
+.key {
+  background: transparent;
+  color: $primary-color;
+  padding: 15px 0;
+  font-size: 35px;
+  border: 2px solid $primary-color;
+  border-radius: 20px;
+  cursor: pointer;
+  text-align: center;
+  width: 13vh;
+  height: 13vh;
+  font-weight: bold;
+}
