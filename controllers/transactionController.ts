@@ -90,3 +90,18 @@ export const transferMoney = asyncHandler(async (req: Request, res: Response, ne
         transaction,
     });
 });
+<<<<<<< HEAD
+=======
+
+//get history of transactions
+
+export const getTransactionHistory = asyncHandler(async (req: Request, res: Response) => {
+    const { userId } = req.params; 
+   
+    const transactions = await TransactionModel.find({ 
+        $or: [{ userId }, { receiverId: userId }] 
+    }).sort({ date: -1 });
+
+    res.status(200).json({ transactions });
+});
+>>>>>>> d4a8e6a (Initial commit)
