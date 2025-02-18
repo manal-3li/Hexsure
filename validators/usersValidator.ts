@@ -1,6 +1,5 @@
 import { body } from "express-validator";
 import usersModel from "../Models/usersModel";
-import TransactionModel from "../Models/usersModel";
 
 
 export const userValidationRules = [

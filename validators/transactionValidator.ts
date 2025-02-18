@@ -1,11 +1,10 @@
-import { body } from "express-validator";
-import transactionModel from "../Models/transactionModel";
-import { Request, Response, NextFunction } from 'express';
-import { validationResult } from 'express-validator';
-
-
+import {check, param } from "express-validator";//bahy
+import validatorMiddleware from "./validatorMiddleware";
 export const transactionValidationRules = [
-  body('userId').isMongoId().withMessage('Invalid userId'),
-  body('receiverId').isMongoId().withMessage('Invalid receiverId'),
-  body('amount').isFloat({ gt: 0 }).withMessage('Amount must be greater than 0')
+  param('id').isMongoId().withMessage('Invalid userId'),
+  check('username').optional()
+  .isString()
+  .withMessage('Invalid receiver username'), 
+  check('amount').isNumeric().withMessage('Amount must be numeric and greater than 0'),
+  validatorMiddleware
 ];

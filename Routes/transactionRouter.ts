@@ -1,19 +1,13 @@
 import express from 'express';
-<<<<<<< HEAD
-import { depositMoney, transferMoney } from '../controllers/transactionController';
-=======
-import { depositMoney, transferMoney, getTransactionHistory } from '../controllers/transactionController';
->>>>>>> d4a8e6a (Initial commit)
+import { depositMoney, transferMoney, getTransactionHistory,withdrawMoney } from '../controllers/transactionController';
 import { transactionValidationRules } from '../validators/transactionValidator';
-import asyncHandler from 'express-async-handler';
+import validatorMiddleware from '../validators/validatorMiddleware';
 
 const transactionRouter = express.Router();
-
-transactionRouter.post('/deposit', transactionValidationRules, asyncHandler(depositMoney));
-transactionRouter.post('/transfer', transactionValidationRules, asyncHandler(transferMoney));
-<<<<<<< HEAD
-=======
-transactionRouter.get('/history/:userId', transactionValidationRules, asyncHandler(getTransactionHistory));
->>>>>>> d4a8e6a (Initial commit)
+//add protect route at the end
+transactionRouter.post('/deposit/:id', transactionValidationRules, depositMoney); 
+transactionRouter.post('/withdraw/:id', transactionValidationRules, withdrawMoney);
+transactionRouter.post('/transfer/:id', transactionValidationRules, transferMoney);
+transactionRouter.get('/history/:id', validatorMiddleware, getTransactionHistory);
 
 export default transactionRouter;
