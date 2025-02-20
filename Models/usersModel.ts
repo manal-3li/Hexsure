@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Schema, Document, Types } from 'mongoose';
 import {users} from "../Interfaces/usersInterface";
 import bcrypt from 'bcryptjs';
 
@@ -28,8 +28,12 @@ const usersSchema:Schema = new Schema<users>({
         city: { type: String },
         country: { type: String }
       },
-    accounts: [{ type: Schema.Types.ObjectId, ref: "Account" }]
-    
+      accounts: [
+        {
+            _id: { type: Schema.Types.ObjectId, ref: 'Account' }, 
+            type: { type: String, enum: ['current', 'savings', 'foreign_currency'], required: true } 
+        }
+    ]
 
 },{timestamps:true});
 

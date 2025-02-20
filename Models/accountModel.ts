@@ -10,6 +10,8 @@ const accountSchema = new Schema<Account>({
   },
   balance: { type: Number, default: 0 },
   currency: { type: String, required: true },
+  cardNum: { type: String, required: true }, 
+  IBAN: { type: String, required: true },
   createdAt: { type: Date, default: Date.now }
 });
 

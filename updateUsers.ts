@@ -1,20 +1,16 @@
 import mongoose from "mongoose";
-import UserModel from "./Models/usersModel"; 
+import UserModel from "./Models/usersModel";
 
-const updateUsersAccounts = async () => {
-  try {
-    await mongoose.connect("mongodb://localhost:27017/yourDatabaseName"); 
+const updateUsers = async () => {
+    await mongoose.connect("mongodb://localhost:27017/YOUR_DATABASE_NAME");
 
-    await UserModel.updateMany(
-      { accounts: { $exists: false } }, 
-      { $set: { accounts: [] } } 
+    const result = await UserModel.updateMany(
+        { accounts: { $exists: false } },
+        { $set: { accounts: [] } }
     );
 
-    console.log("updateUsersAccounts: Done!");
-    mongoose.disconnect();
-  } catch (error) {
-    console.error("Error", error);
-  }
+    console.log(`Updated ${result.modifiedCount} users.`);
+    mongoose.connection.close();
 };
 
-updateUsersAccounts();
+updateUsers();

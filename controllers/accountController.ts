@@ -2,6 +2,15 @@ import { Request, Response } from "express";
 import asyncHandler from "express-async-handler";
 import AccountModel from "../Models/accountModel";
 import usersModel from '../Models/usersModel';
+import { Types } from "mongoose";
+
+const generateCardNumber = () => {
+    return Math.floor(1000000000000000 + Math.random() * 9000000000000000).toString();
+};
+
+const generateIBAN = (userId: string) => {
+    return `EG${Math.floor(1000000000000000 + Math.random() * 9000000000000000)}`;
+};
 
 export const createAccount = asyncHandler(async (req: Request, res: Response) => {
     const { type, currency } = req.body;
@@ -24,13 +33,20 @@ export const createAccount = asyncHandler(async (req: Request, res: Response) =>
         return;
     }
 
+    const cardNum = generateCardNumber();
+    const IBAN = generateIBAN(userId);
+
     const newAccount = await AccountModel.create({
         userId,
         type,
         balance: 0,
         currency,
-        accounts: user.accounts
+        cardNum,
+        IBAN
     });
+
+    user.accounts.push({ _id: newAccount._id as Types.ObjectId, type });
+    await user.save();
 
     res.status(201).json({ message: "Account created successfully", account: newAccount });
 });

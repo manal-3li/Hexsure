@@ -1,11 +1,13 @@
-import mongoose, { Document } from 'mongoose';
+import mongoose, { Document, Types } from 'mongoose';
 
 type Role = 'user' | 'admin'| 'manager' ;
+type AccountType = 'current' | 'savings' | 'foreign_currency';
+
 export interface users extends Document{
     email: string;
     password: string;
     name: string;
-    username: string;  //bahy
+    username: string; 
     fingerId: number;
     role: Role;
     active: boolean;
@@ -16,7 +18,7 @@ export interface users extends Document{
     phoneNum: string;
     cvv: string ;
     balance? :number ;
-    accounts: mongoose.Schema.Types.ObjectId[];
+    accounts: Account[];
 
 }
 
@@ -24,4 +26,9 @@ export interface Address extends Document {
   street: string ;
   city: string;
   country: string;
+}
+
+export interface Account {
+  _id: Types.ObjectId; 
+  type: AccountType;   
 }
