@@ -33,7 +33,8 @@ const usersSchema:Schema = new Schema<users>({
             _id: { type: Schema.Types.ObjectId, ref: 'Account' }, 
             type: { type: String, enum: ['current', 'savings', 'foreign_currency'], required: true } 
         }
-    ]
+    ],
+  cardId: { type: Schema.Types.ObjectId, ref: "Card" },
 
 },{timestamps:true});
 

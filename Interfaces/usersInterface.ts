@@ -19,6 +19,7 @@ export interface users extends Document{
     cvv: string ;
     balance? :number ;
     accounts: Account[];
+    cardId?: mongoose.Types.ObjectId;
 
 }
 
